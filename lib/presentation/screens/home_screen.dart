@@ -40,18 +40,21 @@ class _HomeScreenState extends State<HomeScreen>
   @override
   Widget build(BuildContext context) {
     final expense = Provider.of<ExpenseListDataProvider>(context);
-    final totalExpense =
-        HelperFunctions.calculateTotalExpense(expense.expenseList);
-    final maxIndex = HelperFunctions.getMaxIndex(expense.expenseList);
+    late num totalExpense;
+    late int maxIndex;
+    if (expense.expenseList.isNotEmpty){
+      totalExpense =
+      HelperFunctions.calculateTotalExpense(expense.expenseList);
+      maxIndex = HelperFunctions.getMaxIndex(expense.expenseList);
+    }
 
     return Scaffold(
       body: Container(
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/bg.png"),
-              fit: BoxFit.contain,
-              alignment: Alignment.topCenter
-            ),
+                image: AssetImage("assets/bg.png"),
+                fit: BoxFit.contain,
+                alignment: Alignment.topCenter),
           ),
           padding:
               const EdgeInsets.only(top: 20, bottom: 20, left: 30, right: 30),
@@ -69,7 +72,7 @@ class _HomeScreenState extends State<HomeScreen>
                             style: TextStyle(fontSize: 27),
                           ),
                           FloatingActionButton(
-                            backgroundColor: const Color(0xff267b7b),
+                              backgroundColor: const Color(0xff267b7b),
                               child: const Icon(Icons.add),
                               onPressed: () {
                                 ModalSheets.displayAddBottomSheet(
@@ -89,9 +92,7 @@ class _HomeScreenState extends State<HomeScreen>
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(20),
                                   border: Border.all(
-                                    width: 0.4,
-                                    color: Colors.black54
-                                  ),
+                                      width: 0.4, color: Colors.black54),
                                   boxShadow: [
                                     BoxShadow(
                                       color: Colors.grey.withOpacity(0.5),
@@ -125,13 +126,12 @@ class _HomeScreenState extends State<HomeScreen>
                         itemBuilder: (context, index, animation) {
                           return SlideTransition(
                               position: _animation,
-                            child: ExpenseTile(
+                              child: ExpenseTile(
                                   id: expense.expenseList[index].id,
                                   expenseTitle:
                                       expense.expenseList[index].expenseTitle,
                                   amount: expense.expenseList[index].amount,
-                                  date: expense.expenseList[index].date)
-                          );
+                                  date: expense.expenseList[index].date));
                         },
                       ),
                     ),

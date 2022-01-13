@@ -6,20 +6,27 @@ import 'package:provider/provider.dart';
 
 removeItemDialogue(BuildContext context, int id) {
   final expenseListRequest =
-  Provider.of<ExpenseListDataProvider>(context, listen: false);
+      Provider.of<ExpenseListDataProvider>(context, listen: false);
 
   Widget cancelButton = TextButton(
-    child: const Text("Cancel", style: TextStyle(color: Color(0xff267b7b)),),
-    onPressed:  () {
+    child: const Text(
+      "Cancel",
+      style: TextStyle(color: Color(0xff267b7b)),
+    ),
+    onPressed: () {
       Navigator.of(context).pop();
     },
   );
   Widget removeButton = TextButton(
-    child: const Text("REMOVE", style: TextStyle(color: Colors.red),),
-    onPressed:  () {
+    child: const Text(
+      "REMOVE",
+      style: TextStyle(color: Colors.red),
+    ),
+    onPressed: () {
       CrudOperations.deleteExpense(id);
       expenseListRequest.getAllExpensesData(context);
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const HomeScreen()));
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (_) => const HomeScreen()));
     },
   );
 

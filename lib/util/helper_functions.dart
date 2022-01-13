@@ -7,7 +7,7 @@ class HelperFunctions {
   static List<Expense> parseExpenseArray(String responseBody) {
     final parsed = jsonDecode(responseBody);
     List<Expense> chars =
-    parsed.map<Expense>((json) => Expense.fromJson(json)).toList();
+        parsed.map<Expense>((json) => Expense.fromJson(json)).toList();
     return chars;
   }
 
@@ -20,10 +20,10 @@ class HelperFunctions {
     return result;
   }
 
-  static int getMaxIndex(List<Expense> expenses){
+  static int getMaxIndex(List<Expense> expenses) {
     int max = expenses[0].id;
     for (var element in expenses) {
-      if (max < element.id){
+      if (max < element.id) {
         max = element.id;
       }
     }
@@ -34,16 +34,14 @@ class HelperFunctions {
   static Future<DateTime?> selectDate(BuildContext context) async {
     DateTime currentDate = DateTime.now();
     final DateTime? pickedDate = await showDatePicker(
-        context: context,
-        initialDate: currentDate,
-        firstDate: DateTime(2015),
-        lastDate: DateTime(2050))
-    .then((value) {
+            context: context,
+            initialDate: currentDate,
+            firstDate: DateTime(2015),
+            lastDate: DateTime(2050))
+        .then((value) {
       if (value != null && value != currentDate) {
         return value;
       }
     });
-
   }
-
 }

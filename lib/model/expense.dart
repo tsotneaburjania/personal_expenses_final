@@ -4,7 +4,8 @@ class Expense {
   num amount;
   String date;
 
-  Expense({this.id = 0, this.expenseTitle = "", this.amount = 0.0, this.date = ""});
+  Expense(
+      {this.id = 0, this.expenseTitle = "", this.amount = 0.0, this.date = ""});
 
   factory Expense.fromJson(Map<String, dynamic> json) {
     return Expense(

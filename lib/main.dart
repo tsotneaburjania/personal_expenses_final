@@ -18,8 +18,10 @@ void main() {
 }
 
 List<SingleChildWidget> providers = [
-  ChangeNotifierProvider<ExpenseDataProvider>(create: (_) => ExpenseDataProvider()),
-  ChangeNotifierProvider<ExpenseListDataProvider>(create: (_) => ExpenseListDataProvider()),
+  ChangeNotifierProvider<ExpenseDataProvider>(
+      create: (_) => ExpenseDataProvider()),
+  ChangeNotifierProvider<ExpenseListDataProvider>(
+      create: (_) => ExpenseListDataProvider()),
   ChangeNotifierProvider<DateProvider>(create: (_) => DateProvider()),
 ];
 
@@ -36,13 +38,18 @@ class MyApp extends StatelessWidget {
       //   ),
       // ),
       theme: ThemeData(
-        textTheme: TextTheme(
-          bodyText1: GoogleFonts.poppins(
-              fontSize: 16, fontWeight: FontWeight.w400, letterSpacing: 0.5, color: Color(0xff707070)),
-          bodyText2: GoogleFonts.poppins(
-              fontSize: 14, fontWeight: FontWeight.w400, letterSpacing: 0.25, color: Color(0xff707070)),
-        )
-      ),
+          textTheme: TextTheme(
+        bodyText1: GoogleFonts.poppins(
+            fontSize: 16,
+            fontWeight: FontWeight.w400,
+            letterSpacing: 0.5,
+            color: const Color(0xff707070)),
+        bodyText2: GoogleFonts.poppins(
+            fontSize: 14,
+            fontWeight: FontWeight.w400,
+            letterSpacing: 0.25,
+            color: const Color(0xff707070)),
+      )),
       initialRoute: '/login',
       routes: {
         '/': (context) => const HomeScreen(),

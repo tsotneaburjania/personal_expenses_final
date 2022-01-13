@@ -27,33 +27,50 @@ class ModalSheets {
                 padding: const EdgeInsets.all(20.0),
                 child: Column(
                   children: <Widget>[
-                    Center(child: Text(expense.expenseImpl.expenseTitle, style: const TextStyle(fontSize: 30),)),
+                    Center(
+                        child: Text(
+                      expense.expenseImpl.expenseTitle,
+                      style: const TextStyle(fontSize: 30),
+                    )),
                     Column(
                       children: [
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const Text("Expense Amount:", style: TextStyle(fontSize: 18),),
-                            Text(expense.expenseImpl.amount.toString() + "\$", style: const TextStyle(fontSize: 18),)
+                            const Text(
+                              "Expense Amount:",
+                              style: TextStyle(fontSize: 18),
+                            ),
+                            Text(
+                              expense.expenseImpl.amount.toString() + "\$",
+                              style: const TextStyle(fontSize: 18),
+                            )
                           ],
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const Text("Date:", style: TextStyle(fontSize: 18),),
-                            Text(expense.expenseImpl.date
-                                .substring(0, expense.expenseImpl.date.indexOf(" ")), style: const TextStyle(fontSize: 18),)
+                            const Text(
+                              "Date:",
+                              style: TextStyle(fontSize: 18),
+                            ),
+                            Text(
+                              expense.expenseImpl.date.substring(
+                                  0, expense.expenseImpl.date.indexOf(" ")),
+                              style: const TextStyle(fontSize: 18),
+                            )
                           ],
                         ),
                         Container(
-                          constraints: const BoxConstraints(minWidth: 200, maxWidth: 300, maxHeight: 300),
+                          constraints: const BoxConstraints(
+                              minWidth: 200, maxWidth: 300, maxHeight: 300),
                           child: Padding(
                             padding: const EdgeInsets.only(top: 100),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 FloatingActionButton.large(
-                                  backgroundColor: const Color(0xff267b7b),
+                                    backgroundColor: const Color(0xff267b7b),
                                     child: const Icon(Icons.edit),
                                     onPressed: () {
                                       displayEditBottomSheet(
@@ -61,16 +78,15 @@ class ModalSheets {
                                           expense.expenseImpl.id,
                                           expense.expenseImpl.expenseTitle,
                                           expense.expenseImpl.amount,
-                                          expense.expenseImpl.date
-                                      );
+                                          expense.expenseImpl.date);
                                     }),
                                 FloatingActionButton.large(
                                     backgroundColor: const Color(0xff267b7b),
                                     child: const Icon(Icons.delete),
                                     onPressed: () {
-                                      removeItemDialogue(context, expense.expenseImpl.id);
-                                    }
-                                )
+                                      removeItemDialogue(
+                                          context, expense.expenseImpl.id);
+                                    })
                               ],
                             ),
                           ),
@@ -106,7 +122,8 @@ class ModalSheets {
             child: Padding(
               padding: MediaQuery.of(context).viewInsets,
               child: Container(
-                constraints: const BoxConstraints(minHeight: 400, maxHeight: 450),
+                constraints:
+                    const BoxConstraints(minHeight: 400, maxHeight: 450),
                 color: const Color(0xffcbefef),
                 child: Padding(
                   padding: const EdgeInsets.all(50.0),
@@ -123,7 +140,9 @@ class ModalSheets {
                             ),
                             TextField(
                               controller: _idAmt,
-                              keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                              keyboardType:
+                                  const TextInputType.numberWithOptions(
+                                      decimal: true),
                               textAlign: TextAlign.center,
                               decoration: const InputDecoration(
                                   hintText: 'Please enter expense amount'),
@@ -138,29 +157,33 @@ class ModalSheets {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Container(
-                                  constraints: const BoxConstraints(minWidth: 80, maxWidth: 100),
-                                    child: Text(date.dateTime)
-                                ),
+                                    constraints: const BoxConstraints(
+                                        minWidth: 80, maxWidth: 100),
+                                    child: Text(date.dateTime)),
                                 Column(
                                   children: [
                                     TextButton(
                                         onPressed: () {
-                                          dateRequest.selectDateProvider(context);
+                                          dateRequest
+                                              .selectDateProvider(context);
                                         },
                                         child: const Text(
                                           'PICK DATE',
                                           style: TextStyle(fontSize: 18.0),
                                         ),
                                         style: ButtonStyle(
-                                          padding: MaterialStateProperty.all<EdgeInsets>(
+                                          padding: MaterialStateProperty.all<
+                                                  EdgeInsets>(
                                               const EdgeInsets.all(10)),
                                           shape: MaterialStateProperty.all<
                                                   RoundedRectangleBorder>(
                                               RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(5.0),
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
                                           )),
-                                          minimumSize: MaterialStateProperty.all<Size>(
-                                              const Size(150, 30)),
+                                          minimumSize:
+                                              MaterialStateProperty.all<Size>(
+                                                  const Size(150, 30)),
                                           backgroundColor:
                                               MaterialStateProperty.all<Color>(
                                                   const Color(0xff267b7b)),
@@ -175,23 +198,31 @@ class ModalSheets {
                                               _idTitle.text,
                                               num.parse(_idAmt.text),
                                               date.dateTime);
-                                          expenseListRequest.getAllExpensesData(context);
-                                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const HomeScreen()));
+                                          expenseListRequest
+                                              .getAllExpensesData(context);
+                                          Navigator.pushReplacement(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (_) =>
+                                                      const HomeScreen()));
                                         },
                                         child: const Text(
                                           'ADD',
                                           style: TextStyle(fontSize: 18.0),
                                         ),
                                         style: ButtonStyle(
-                                          padding: MaterialStateProperty.all<EdgeInsets>(
+                                          padding: MaterialStateProperty.all<
+                                                  EdgeInsets>(
                                               const EdgeInsets.all(10)),
                                           shape: MaterialStateProperty.all<
                                                   RoundedRectangleBorder>(
                                               RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(5.0),
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
                                           )),
-                                          minimumSize: MaterialStateProperty.all<Size>(
-                                              const Size(150, 30)),
+                                          minimumSize:
+                                              MaterialStateProperty.all<Size>(
+                                                  const Size(150, 30)),
                                           backgroundColor:
                                               MaterialStateProperty.all<Color>(
                                                   const Color(0xff267b7b)),
@@ -215,7 +246,8 @@ class ModalSheets {
         });
   }
 
-  static void displayEditBottomSheet(context, int id, String title, num amount, String dateInit) {
+  static void displayEditBottomSheet(
+      context, int id, String title, num amount, String dateInit) {
     TextEditingController _idCtrl = TextEditingController();
     TextEditingController _idAmt = TextEditingController();
     TextEditingController _idTitle = TextEditingController();
@@ -224,7 +256,6 @@ class ModalSheets {
     _idCtrl.text = (id).toString();
     _idAmt.text = amount.toString();
     _idTitle.text = title;
-
 
     final dateRequest = Provider.of<DateProvider>(context, listen: false);
     final expenseListRequest =
@@ -247,91 +278,96 @@ class ModalSheets {
                   children: <Widget>[
                     Expanded(
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           TextField(
                             controller: _idCtrl,
-                            textAlign: TextAlign.center,
                             readOnly: true,
                           ),
                           TextField(
                             controller: _idAmt,
-                            keyboardType: TextInputType.numberWithOptions(decimal: true),
-                            textAlign: TextAlign.center,
+                            keyboardType:
+                                const TextInputType.numberWithOptions(decimal: true),
                           ),
                           TextField(
                             controller: _idTitle,
-                            textAlign: TextAlign.center,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Container(
-                                  constraints: const BoxConstraints(minWidth: 80, maxWidth: 100),
-                                  child: Text(date)
-                              ),
-                              Column(
-                                children: [
-                                  TextButton(
-                                      onPressed: () {
-                                        dateRequest.selectDateProvider(context);
-                                      },
-                                      child: const Text(
-                                        'PICK DATE',
-                                        style: TextStyle(fontSize: 18.0),
-                                      ),
-                                      style: ButtonStyle(
-                                        padding: MaterialStateProperty.all<EdgeInsets>(
-                                            const EdgeInsets.all(10)),
-                                        shape: MaterialStateProperty.all<
-                                                RoundedRectangleBorder>(
-                                            RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(5.0),
-                                        )),
-                                        minimumSize: MaterialStateProperty.all<Size>(
+                                  constraints: const BoxConstraints(
+                                      minWidth: 80, maxWidth: 100),
+                                  child: Text(date)),
+                              TextButton(
+                                  onPressed: () {
+                                    dateRequest.selectDateProvider(context);
+                                  },
+                                  child: const Text(
+                                    'PICK DATE',
+                                    style: TextStyle(fontSize: 18.0),
+                                  ),
+                                  style: ButtonStyle(
+                                    padding: MaterialStateProperty.all<
+                                            EdgeInsets>(
+                                        const EdgeInsets.all(10)),
+                                    shape: MaterialStateProperty.all<
+                                            RoundedRectangleBorder>(
+                                        RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.circular(5.0),
+                                    )),
+                                    minimumSize:
+                                        MaterialStateProperty.all<Size>(
                                             const Size(150, 30)),
-                                        backgroundColor:
-                                            MaterialStateProperty.all<Color>(
-                                                const Color(0xff267b7b)),
-                                        foregroundColor:
-                                            MaterialStateProperty.all<Color>(
-                                                Colors.white),
-                                      )),
-                                  TextButton(
-                                      onPressed: () {
-                                        CrudOperations.editExpense(
-                                            int.parse(_idCtrl.text),
-                                            _idTitle.text,
-                                            num.parse(_idAmt.text),
-                                            date);
-                                        expenseListRequest.getAllExpensesData(context);
-                                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const HomeScreen()));
-                                      },
-                                      child: const Text(
-                                        'EDIT',
-                                        style: TextStyle(fontSize: 18.0),
-                                      ),
-                                      style: ButtonStyle(
-                                        padding: MaterialStateProperty.all<EdgeInsets>(
-                                            const EdgeInsets.all(10)),
-                                        shape: MaterialStateProperty.all<
-                                                RoundedRectangleBorder>(
-                                            RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(5.0),
-                                        )),
-                                        minimumSize: MaterialStateProperty.all<Size>(
-                                            const Size(150, 30)),
-                                        backgroundColor:
-                                            MaterialStateProperty.all<Color>(
-                                                const Color(0xff267b7b)),
-                                        foregroundColor:
-                                            MaterialStateProperty.all<Color>(
-                                                Colors.white),
-                                      )),
-                                ],
-                              ),
+                                    backgroundColor:
+                                        MaterialStateProperty.all<Color>(
+                                            const Color(0xff267b7b)),
+                                    foregroundColor:
+                                        MaterialStateProperty.all<Color>(
+                                            Colors.white),
+                                  )),
                             ],
-                          )
+                          ),
+                          TextButton(
+                              onPressed: () {
+                                CrudOperations.editExpense(
+                                    int.parse(_idCtrl.text),
+                                    _idTitle.text,
+                                    num.parse(_idAmt.text),
+                                    date);
+                                expenseListRequest
+                                    .getAllExpensesData(context);
+                                Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (_) =>
+                                        const HomeScreen()));
+                              },
+                              child: const Text(
+                                'EDIT',
+                                style: TextStyle(fontSize: 18.0),
+                              ),
+                              style: ButtonStyle(
+                                padding: MaterialStateProperty.all<
+                                    EdgeInsets>(
+                                    const EdgeInsets.all(10)),
+                                shape: MaterialStateProperty.all<
+                                    RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                      borderRadius:
+                                      BorderRadius.circular(5.0),
+                                    )),
+                                minimumSize:
+                                MaterialStateProperty.all<Size>(
+                                    const Size(150, 30)),
+                                backgroundColor:
+                                MaterialStateProperty.all<Color>(
+                                    const Color(0xff267b7b)),
+                                foregroundColor:
+                                MaterialStateProperty.all<Color>(
+                                    Colors.white),
+                              )),
                         ],
                       ),
                     )

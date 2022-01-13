@@ -11,7 +11,8 @@ class LoginScreen extends StatelessWidget {
         child: Align(
           alignment: Alignment.topCenter,
           child: Container(
-            constraints: const BoxConstraints(minWidth: 200, maxWidth: 300, minHeight: 300, maxHeight: 500),
+            constraints: const BoxConstraints(
+                minWidth: 200, maxWidth: 300, minHeight: 300, maxHeight: 500),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -32,17 +33,18 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  constraints: const BoxConstraints(minWidth: 200, maxWidth: 300),
+                  constraints:
+                      const BoxConstraints(minWidth: 200, maxWidth: 300),
                   child: TextButton(
                       onPressed: () {
                         Navigator.pushNamed(context, '/');
                       },
                       style: ButtonStyle(
-                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(18.0),
-                            )
-                        ),
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18.0),
+                        )),
                         backgroundColor: MaterialStateProperty.all<Color>(
                             const Color(0xffa8e3e8)),
                         foregroundColor:
